@@ -6,7 +6,7 @@ public class MD5Test {
 	
 	public static final String MD5 = "MD5";
 	
-	//��ȡMD5�ַ���
+	//MD5
 	public static String EncryptionStr(String str,String algorithm) {
 		byte[] buf = null;
 		String strRes = null;
@@ -42,7 +42,7 @@ public class MD5Test {
 	public static void main(String[] args) {
 		String str = "text";
 		System.out.println(EncryptionStr(str, MD5));//1cb251ec0d568de6a929b520c4aed8d1
-		System.out.println(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"));//
-		System.out.println(convertMD5(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"))); //����
+		System.out.println(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"));//加密
+		System.out.println(convertMD5(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"))); //解密
 	}
 }
