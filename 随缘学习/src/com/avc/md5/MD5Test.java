@@ -6,7 +6,7 @@ public class MD5Test {
 	
 	public static final String MD5 = "MD5";
 	
-	//»ñÈ¡MD5×Ö·û´®
+	//ï¿½ï¿½È¡MD5ï¿½Ö·ï¿½ï¿½ï¿½
 	public static String EncryptionStr(String str,String algorithm) {
 		byte[] buf = null;
 		String strRes = null;
@@ -29,7 +29,7 @@ public class MD5Test {
 		return strRes;
 	}
 	
-	//¼ÓÃÜ½âÃÜ
+	//åŠ å¯†è§£å¯†
 	public static String convertMD5(String str) {
 		char[] chs = str.toCharArray();
 		for (int i = 0; i < chs.length; i++) {
@@ -41,8 +41,8 @@ public class MD5Test {
 	
 	public static void main(String[] args) {
 		String str = "text";
-		System.out.println(EncryptionStr(str, MD5));
-		System.out.println(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"));//¼ÓÃÜ
-		System.out.println(convertMD5(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"))); //½âÃÜ
+		System.out.println(EncryptionStr(str, MD5));//1cb251ec0d568de6a929b520c4aed8d1
+		System.out.println(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"));//
+		System.out.println(convertMD5(convertMD5("1cb251ec0d568de6a929b520c4aed8d1"))); //ï¿½ï¿½ï¿½ï¿½
 	}
 }
