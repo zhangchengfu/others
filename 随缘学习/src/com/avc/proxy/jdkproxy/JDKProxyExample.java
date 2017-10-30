@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;
 public class JDKProxyExample implements InvocationHandler {
 	
 	private Object target=null; //真是的对象
-	
+
 	/**
 	 * 建立代理对象和真实对象的代理关系
 	 * @param target 真实对象
