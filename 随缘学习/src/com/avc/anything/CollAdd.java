@@ -4,7 +4,6 @@ import java.util.*;
 
 /**
  * @author AmVilCres
- * @desc 
  * @date 2017Äê11ÔÂ1ÈÕ
  */
 public class CollAdd {

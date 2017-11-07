@@ -7,7 +7,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 /**
- * CGLIB代理不需要提供接口，只要一个非抽象类就能实现代理
+ * @desc  CGLIB代理不需要提供接口，只要一个非抽象类就能实现代理
  * */
 public class CglibProxyExample implements MethodInterceptor{
 
