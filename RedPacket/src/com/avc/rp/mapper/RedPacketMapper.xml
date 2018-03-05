@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.avc.rp.dao.RedPacketDao">
+
+  <sql id="Base_Column_List">
+    id, user_id, amount, send_date, total, unit_amount, stock, version, note
+  </sql>
+  
+  <!-- 查询红包具体信息 -->
+  <select id="getRedPacket" parameterType="int" resultType="com.avc.rp.model.RedPacket">
+  	select <include refid="Base_Column_List" /> from T_RED_PACKET where id=#{id}
+  </select>
+  
+  <!-- 扣减红包库存 -->
+  <update id="decreaseRedPacket">
+  	update T_RED_PACKET set stock = stock-1 where id = #{id}
+  </update>
+  
+  <update id="decreaseRedPacketForVersion">
+  	update T_RED_PACKET 
+  	set stock = stock-1,
+  	version = version+1
+  	where id = #{id} 
+  	and version=#{version}
+  </update>
+  
+  <select id="getRedPacketForUpdate" parameterType="int" resultType="com.avc.rp.model.RedPacket">
+  	select <include refid="Base_Column_List" /> from T_RED_PACKET where id=#{id} for update
+  </select>
+</mapper>
