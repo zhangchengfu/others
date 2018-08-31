@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PermissionMapper">
+	<resultMap id="BaseResultMap" type="com.example.demo.model.Permission" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, url, name
+  </sql>
+  
+   <!-- 根据用ID查询permission -->
+  <select id="findPermissionByUserId" resultType="java.lang.String">
+  		select p.url from u_permission p , u_role_permission rp, u_user_role ur 
+		where uid =#{id,jdbcType=BIGINT} and p.id = rp.pid and rp.rid = ur.rid
+  </select>
+</mapper>
