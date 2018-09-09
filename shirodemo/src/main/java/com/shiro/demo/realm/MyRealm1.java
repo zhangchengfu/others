@@ -16,7 +16,7 @@ public class MyRealm1 implements Realm {
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String username = (String) authenticationToken.getPrincipal();//得到用户名
         String password = new String((char[])authenticationToken.getCredentials()); // 得到密码
-        if(!"zhang".equals(username)){
+        if(!"zhang1".equals(username)){
             throw new UnknownAccountException("该账户不存在");
         }
 

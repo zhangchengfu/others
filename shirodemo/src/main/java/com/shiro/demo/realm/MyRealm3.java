@@ -3,9 +3,9 @@ package com.shiro.demo.realm;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;
 
-public class MyRealm2 implements Realm {
+public class MyRealm3 implements Realm {
     public String getName() {
-        return "myrealm2";
+        return "myrealm3";
     }
 
     public boolean supports(AuthenticationToken authenticationToken) {
@@ -24,6 +24,6 @@ public class MyRealm2 implements Realm {
             throw new IncorrectCredentialsException("密码不正确");
         }
         // 如果身份认证成功，返回一个AuthenticationInfo 实现
-        return new SimpleAuthenticationInfo(username,password,getName());
+        return new SimpleAuthenticationInfo(username+"@163.com",password,getName());
     }
 }
