@@ -1,9 +1,0 @@
-server:
-  port: 8080
-  
-
-  
- #Log4j配置
-logging:
-  level:
-    root: debug
