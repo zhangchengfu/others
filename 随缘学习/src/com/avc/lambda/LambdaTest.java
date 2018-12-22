@@ -8,7 +8,9 @@ import org.testng.AssertJUnit;
 import static org.testng.AssertJUnit.assertEquals;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
@@ -28,9 +30,9 @@ public class LambdaTest {
     	
     	AssertJUnit.assertEquals(Arrays.asList("a", "b", "c"), collected); 
     	
-    	List<String> c2 = Stream.of("af","b","cfsf")
+    	List<String> c2 = Stream.of("af","b","cfsf","sd")
     			.map(s -> s.toUpperCase())
-    			.collect(Collectors.toList());
+    			.collect(Collectors.toCollection(LinkedList::new));
     	
     	//AssertJUnit.assertEquals(Arrays.asList("A", "B", "C"), c2); 
     	
@@ -40,16 +42,50 @@ public class LambdaTest {
     			//.collect(Collectors.toList());
     	
     	System.out.println("max = "+toger);
-    	
+    	// 最小值
     	String min = c2.stream().min(Comparator.comparing(s -> s.length())).get();
     	System.out.println(min);
-    	int count = Stream.of(1,2,3).reduce(0, (acc,ele) -> acc +ele);
+    	// 求和
+    	int count = Stream.of(1,2,3).reduce(0, (acc,ele) -> acc+ele);
     	System.out.println(count);
+    	// 流式求和
     	Integer[] ar = new Integer[]{1,3,3};
     	System.out.println(addUp(Stream.of(ar)));
     	
     	Optional<?> emptyOptional = Optional.empty();
     	System.out.println(emptyOptional);
+    	
+    	// 数据分块(分解成两个集合)
+    	Map<Boolean, List<String>> ls = c2.stream().collect(Collectors.partitioningBy(s -> s.length() > 1));
+    	/*for(Map.Entry<Boolean, List<String>> m : ls.entrySet()) {
+    		System.out.println(m.getKey());
+    		System.out.println(Arrays.deepToString(m.getValue().toArray()));
+    	}*/
+    	
+    	// 数据分组是一种更自然的分割数据操作，可以使用任意值对数据分组
+    	Map<Integer, List<String>> map =  c2.stream().collect(Collectors.groupingBy(s -> s.length()));
+    	/*System.out.println("数组分组：");
+    	for(Map.Entry<Integer, List<String>> m : map.entrySet()) {
+    		System.out.println(m.getKey());
+    		System.out.println(Arrays.deepToString(m.getValue().toArray()));
+    	}*/
+    	
+    	// 组合收集器
+    	Map<Integer, Long> cm = c2.stream().collect(Collectors.groupingBy(s -> s.length(),Collectors.counting()));
+    	System.out.println("组合收集器：");
+    	/*for(Map.Entry<Integer, Long> m : cm.entrySet()) {
+    		System.out.println(m.getKey()+"::"+m.getValue());
+    	}*/
+    	Map<Integer, List<String>> p = c2.stream().collect(Collectors.groupingBy(s -> s.length(),
+    			 Collectors.mapping(val -> val.toLowerCase(), Collectors.toList())));
+    	
+    	for(Map.Entry<Integer, List<String>> m : p.entrySet()) {
+    		System.out.println(m.getKey()+"::"+m.getValue());
+    	}
+    	
+    	// 字符串
+    	String str = c2.stream().collect(Collectors.joining(",", "[", "]"));
+    	//System.out.println("字符串："+str);
     }
     
 	public long externalCountArtistsFromLondonExpanded(List<String> allArtists) {
@@ -57,7 +93,6 @@ public class LambdaTest {
     }
 	
 	static int addUp(Stream<Integer> numbers) {
-		 
 		 return numbers.reduce((acc,ele)-> acc+ele).get();
 	 }
    
