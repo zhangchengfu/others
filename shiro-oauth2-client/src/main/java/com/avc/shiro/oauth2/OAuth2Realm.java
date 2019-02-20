@@ -40,6 +40,9 @@ public class OAuth2Realm extends AuthorizingRealm {
         return authorizationInfo;
     }
 
+    /**
+     * 身份认证
+     * */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         OAuth2Token oAuth2Token = (OAuth2Token) token;

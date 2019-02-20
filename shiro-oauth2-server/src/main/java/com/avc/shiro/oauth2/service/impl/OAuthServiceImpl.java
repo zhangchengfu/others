@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+/**
+ * OAuth相关处理：authCode 添加/移除  accessToken的添加/移除 。。。。。
+ * */
 @Service
 public class OAuthServiceImpl implements OAuthService {
 

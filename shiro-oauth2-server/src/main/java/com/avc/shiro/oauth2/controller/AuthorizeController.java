@@ -33,6 +33,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * 授权处理类
+ * */
 @Controller
 @Slf4j
 public class AuthorizeController {

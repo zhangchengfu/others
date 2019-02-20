@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 客户端服务类
+ * */
 @Service
 public class ClientServiceImpl implements ClientService {
 
@@ -16,11 +19,13 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client createClient(Client client) {
+        // 暂时没有用到
         return null;
     }
 
     @Override
     public Client updateClient(Client client) {
+        // 暂时没有用到
         return null;
     }
 

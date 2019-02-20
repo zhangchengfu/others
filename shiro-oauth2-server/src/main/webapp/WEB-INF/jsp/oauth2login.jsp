@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div>使用你的Shiro示例Server帐号访问 [${client.clientName}] ，并同时登录Shiro示例Server</div>
+<div>Server帐号：[${client.clientName}]</div>
 <div class="error">${error}</div>
 
 <form action="" method="post">

@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 令牌生成
+ * */
 @RestController
 @Slf4j
 public class AccessTokenController {
